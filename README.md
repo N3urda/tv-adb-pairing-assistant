@@ -8,9 +8,11 @@
 
 - 主按钮调用 Android 公开的 `Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS`。在 AOSP TV 的开发者选项里，用方向键找到「无线调试」，然后选择「使用配对码配对设备」。
 - 找不到开发者选项时，可打开「设备信息」查找版本号；各品牌启用方式和菜单名称可能不同。若专用入口未提供，应用尝试打开系统设置。
+- 若电视拒绝标准设置入口，v1.0.1 会列出当前系统中可见、可由普通应用启动的系统设置页面供遥控器选择，并在屏幕上显示机型、系统版本、失败类型和候选数量。候选列表只包含系统应用的已导出页面；不同厂商仍可能阻止启动。
+- 雷鸟/TCL 可尝试遥控器「设置」键，或在主界面选齿轮设置；Android TV 与 Google TV 的菜单路径不同，应用内列有两种常见路径。版本号连按 7 次只适用于确有该入口的系统，且不会让不支持无线调试配对码的电视增加此能力。
 - 普通第三方应用不能通过公开 API 自行开启 ADB、替电视生成配对码或批准电脑。配对码与配对端口由电视系统设置提供，首次授权必须在电视上完成。本应用没有无障碍服务；电视厂商设置页本身的遥控器兼容性需要在该机型上确认。
 
-依据：[Android 设置入口 API](https://developer.android.com/reference/android/provider/Settings#ACTION_APPLICATION_DEVELOPMENT_SETTINGS)、[AOSP TV 设置实现](https://android.googlesource.com/platform/packages/apps/TvSettings/+/refs/heads/android14-release/Settings/AndroidManifest.xml)、[AOSP 无线 ADB 配对架构](https://android.googlesource.com/platform/packages/modules/adb/+/HEAD/docs/dev/adb_wifi.md)。
+依据：[Android 设置入口 API](https://developer.android.com/reference/android/provider/Settings#ACTION_APPLICATION_DEVELOPMENT_SETTINGS)、[Android 应用可见性说明](https://developer.android.com/training/package-visibility/use-cases)、[AOSP TV 设置实现](https://android.googlesource.com/platform/packages/apps/TvSettings/+/refs/heads/android14-release/Settings/AndroidManifest.xml)、[TCL Android TV 设置路径](https://support.tcl.com/androidtv-setup-configuration/614301)、[TCL Google TV 设置路径](https://support.tcl.com/us-googletv-common-questions/tcl-google-tv-walkthrough-settings)、[AOSP 无线 ADB 配对架构](https://android.googlesource.com/platform/packages/modules/adb/+/HEAD/docs/dev/adb_wifi.md)。
 
 ## 安装与配对
 
@@ -31,11 +33,11 @@ adb connect TV_IP:CONNECT_PORT
 需要 JDK 17、Android SDK Platform 36 / Build Tools 36.0.0。仓库包含 Gradle 8.14.3 wrapper。设置 `ANDROID_HOME` 或在仓库根目录创建不入库的 `local.properties` 后运行：
 
 ```sh
-./gradlew :app:assembleDebug :app:lintDebug
+./gradlew :app:testDebugUnitTest :app:assembleDebug :app:lintDebug
 ```
 
 开发 APK 位于 `app/build/outputs/apk/debug/app-debug.apk`，使用本机 Android debug 签名。公开 Release 使用独立保管的 release 私钥签名；私钥与密码均不在仓库。自己构建 release 时，将含 `storeFile`、`storePassword`、`keyAlias`、`keyPassword` 的 properties 文件放在仓库之外，设置 `TV_ADB_SIGNING_PROPERTIES` 为其绝对路径，再运行 `./gradlew :app:assembleRelease`。不要发布未签名的 release 产物。
 
 ## 验证范围
 
-Android TV 模拟器上验证过安装、遥控器焦点与滚动、进入 AOSP 系统开发者选项和无线调试页，以及返回助手后的焦点恢复。尚未在具体品牌电视上验证安装、配对码弹窗或 Mac 与电视的实际配对连接。
+Android TV 模拟器上验证过安装、遥控器焦点与滚动、进入 AOSP 系统开发者选项和无线调试页，以及返回助手后的焦点恢复。v1.0.1 另验证了系统设置候选列表可用遥控器选择并打开 AOSP 设置。尚未在雷鸟/TCL 实机上验证候选入口、配对码弹窗或 Mac 与电视的实际配对连接；v1.0.0 用户报告该机型上的标准入口启动失败，但旧版没有记录具体异常。

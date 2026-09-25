@@ -7,6 +7,15 @@
     <string name="open_pairing_detail">先进入系统开发者选项，再选择「无线调试」→「使用配对码配对设备」。</string>
     <string name="open_about">开发者选项未显示？打开设备信息</string>
     <string name="open_settings">打开系统设置</string>
+    <string name="find_settings">查找电视系统设置入口</string>
+    <string name="settings_candidates_title">选择系统设置入口</string>
+    <string name="try_settings_candidates">标准设置入口启动失败。请选择检测到的系统设置入口；若仍失败，请按下方遥控器步骤操作。</string>
+    <string name="no_settings_candidates">未找到可从此应用启动的系统设置入口。请按下方遥控器步骤操作，并拍下诊断信息。</string>
+    <string name="opened_candidate">已请求打开所选系统设置入口。请在系统设置中寻找开发者选项。</string>
+    <string name="candidate_failed">所选入口启动失败。请尝试其他入口或按下方遥控器步骤操作，并拍下诊断信息。</string>
+    <string name="diagnostics">电视：%1$s\n检测到的系统设置入口：%2$s\n最近启动结果：%3$s</string>
+    <string name="manual_settings_title">遥控器手动进入</string>
+    <string name="manual_settings">1. 在电视主界面按遥控器「设置」键；若没有该键，试按主页键，再选择齿轮设置。\n2. Android TV 常见路径是「设备偏好设置 → 关于」；Google TV 常见路径是「全部设置 → 系统 → 关于」。具体名称以电视为准。\n3. 若开发者选项尚未出现，可在「关于」页找到版本号并连续按确定键 7 次，再返回寻找开发者选项。\n4. 若开发者选项里没有「无线调试」或「使用配对码配对设备」，本应用无法替电视添加这项系统能力。</string>
     <string name="instructions_title">配对步骤</string>
     <string name="instructions">1. 让电视与 Mac 处于同一局域网。\n2. 在系统开发者选项打开「无线调试」，进入该页并选择「使用配对码配对设备」。\n3. Mac 运行 adb pair 电视IP:配对端口，输入电视显示的六位配对码。\n4. 配对成功后运行 adb connect 电视IP:连接端口。两个端口不同，请以电视当前显示为准。</string>
     <string name="permission_note">本应用只打开系统设置，不会自行开启 ADB 或生成配对码。首次授权必须由电视系统完成；不同品牌的设置页可能不同。</string>
@@ -14,5 +23,4 @@
     <string name="opened_about">已请求打开设备信息。若开发者选项未启用，请找到版本号并连续按确定键 7 次；具体位置由电视品牌决定。</string>
     <string name="opened_settings">已请求打开系统设置。请从设备偏好设置或系统进入开发者选项。</string>
     <string name="fallback_settings">当前电视没有响应开发者选项入口，已打开系统设置。请手动寻找开发者选项。</string>
-    <string name="no_settings">此电视未提供可从普通应用打开的设置入口。请用遥控器从电视主界面进入系统设置。</string>
 </resources>
