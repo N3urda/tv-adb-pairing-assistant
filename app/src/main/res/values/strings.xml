@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ADB 配对助手</string>
+    <string name="title">ADB 配对助手</string>
+    <string name="subtitle">用遥控器找到系统无线调试和配对码</string>
+    <string name="remote_hint">↑ ↓ 选择　·　确定键打开　·　返回键回到助手</string>
+    <string name="open_pairing">打开开发者选项 → 无线调试</string>
+    <string name="open_pairing_detail">先进入系统开发者选项，再选择「无线调试」→「使用配对码配对设备」。</string>
+    <string name="open_about">开发者选项未显示？打开设备信息</string>
+    <string name="open_settings">打开系统设置</string>
+    <string name="instructions_title">配对步骤</string>
+    <string name="instructions">1. 让电视与 Mac 处于同一局域网。\n2. 在系统开发者选项打开「无线调试」，进入该页并选择「使用配对码配对设备」。\n3. Mac 运行 adb pair 电视IP:配对端口，输入电视显示的六位配对码。\n4. 配对成功后运行 adb connect 电视IP:连接端口。两个端口不同，请以电视当前显示为准。</string>
+    <string name="permission_note">本应用只打开系统设置，不会自行开启 ADB 或生成配对码。首次授权必须由电视系统完成；不同品牌的设置页可能不同。</string>
+    <string name="opened_developer">已请求打开系统开发者选项。请在系统页选择「无线调试」和「使用配对码配对设备」。</string>
+    <string name="opened_about">已请求打开设备信息。若开发者选项未启用，请找到版本号并连续按确定键 7 次；具体位置由电视品牌决定。</string>
+    <string name="opened_settings">已请求打开系统设置。请从设备偏好设置或系统进入开发者选项。</string>
+    <string name="fallback_settings">当前电视没有响应开发者选项入口，已打开系统设置。请手动寻找开发者选项。</string>
+    <string name="no_settings">此电视未提供可从普通应用打开的设置入口。请用遥控器从电视主界面进入系统设置。</string>
+</resources>
